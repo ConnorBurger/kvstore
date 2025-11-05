@@ -11,7 +11,9 @@ add_executable(kvstore_server
         src/server/server.cpp
         src/server/connection.cpp
         src/storage/store.cpp
-        src/protocol/protool.cpp            # <-- fixed filename
+        src/protocol/protool.cpp
+        src/storage/wal.h
+        src/storage/wal.cpp            # <-- fixed filename
 )
 
 target_include_directories(kvstore_server PRIVATE src)
@@ -23,3 +25,12 @@ add_executable(kvstore_client
 )
 
 target_include_directories(kvstore_client PRIVATE src)
+
+
+# Benchmark executable
+add_executable(kvstore_benchmark
+        benchmark.cpp
+        src/protocol/protool.cpp
+)
+
+target_include_directories(kvstore_benchmark PRIVATE src)
